@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace cvProject.Entity.Concrete
 {
-    public sealed class Experince : BaseEntity
+    public sealed class Experience : BaseEntity
     {
         public string Title { get; set; }
         public string Company { get; set; }
