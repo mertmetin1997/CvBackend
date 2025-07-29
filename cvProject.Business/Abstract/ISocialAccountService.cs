@@ -1,6 +1,7 @@
 ﻿using Core.Business;
 using Core.Utilities.Result;
 using cvProject.Entity.Concrete;
+using cvProject.Entity.Dtos.SocialAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace cvProject.Business.Abstract
 {
-    public interface ISocialAccountService : IGenericService<SocialAccount>
+    public interface ISocialAccountService : IGenericService<SocialAccount,SocialAccountResponseDto,SocialAccountCreateRequestDto,SocialAccountUpdateRequestDto,SocialAccountDetailResponseDto>
     {
-        Task<IDataResult<SocialAccount>> GetSocialAccountByNameAsync();
-        Task<IDataResult<IEnumerable<SocialAccount>>> GetSocialAccountByUserNameAsync(); 
+        Task<IDataResult<SocialAccountResponseDto>> GetSocialAccountByNameAsync();
+        Task<IDataResult<IEnumerable<SocialAccountResponseDto>>> GetSocialAccountByUserNameAsync(); 
     }
 }

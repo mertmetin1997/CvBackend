@@ -1,6 +1,7 @@
 ﻿using Core.Business;
 using Core.Utilities.Result;
 using cvProject.Entity.Concrete;
+using cvProject.Entity.Dtos.Skill;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace cvProject.Business.Abstract
 {
-    public interface ISkillService : IGenericService<Skill>
+    public interface ISkillService : IGenericService<Skill,SkillResponseDto,SkillCreateRequestDto,SkillUpdateRequestDto,SkillDetailResponseDto>
     {
-        Task<IDataResult<IEnumerable<Skill>>> GetSkillsProgramLanguagesAsync(bool program);
-        Task<IDataResult<IEnumerable<Skill>>> GetSkillsToolsAsync(bool tools);
+        Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsProgramLanguagesAsync(bool program);
+        Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsToolsAsync(bool tools);
     }
 }
