@@ -98,7 +98,7 @@ namespace cvProject.Business.Concrete
             }
             catch (Exception e)
             {
-                return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(ResultMessages.ErrorGet);
+                return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(e.Message);
             }
         }
 
