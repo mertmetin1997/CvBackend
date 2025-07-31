@@ -2,6 +2,7 @@
 using Core.UnitOfWorks;
 using Core.Utilities.Result;
 using cvProject.Business.Abstract;
+using cvProject.Business.Constans;
 using cvProject.DataAccess.Abstract;
 using cvProject.Entity.Concrete;
 using cvProject.Entity.Dtos.About;
@@ -36,7 +37,7 @@ namespace cvProject.Business.Concrete
 
                 await _unitOfWork.CommitAsync();
                 var response = _mapper.Map<AboutResponseDto>(about);
-                return new SuccessDataResult<AboutResponseDto>(response, "About added successfully");
+                return new SuccessDataResult<AboutResponseDto>(response, ResultMessages.SuccessCreated);
             }
             catch (Exception e)
             {
@@ -98,7 +99,7 @@ namespace cvProject.Business.Concrete
                 about.IsActive = false;
                 _aboutRepository.Update(about);
                 await _unitOfWork.CommitAsync();
-                return new SuccessResult("About removed successfully");
+                return new SuccessResult(ResultMessages.ErrorGet);
             }   
             catch (Exception e)
             {
@@ -114,7 +115,7 @@ namespace cvProject.Business.Concrete
                 about.UpdateAt = DateTime.Now;
                 _aboutRepository.Update(about);
                 await _unitOfWork.CommitAsync();
-                return new SuccessResult("About updated successfully");
+                return new SuccessResult(ResultMessages.SuccessAboutUpdated);
             }
             catch (Exception e)
             {
