@@ -13,6 +13,6 @@ namespace cvProject.Business.Abstract
 {
     public interface ILanguageService : IGenericService<Language,LanguageResponseDto,LanguageCreateRequestDto,LanguageUpdateRequestDto,LanguageDetailResponseDto>
     {
-        Task<IDataResult<IEnumerable>> GetLanguagesGraterLevelAsync(byte level);
+        Task<IDataResult<IEnumerable<LanguageResponseDto>>> GetLanguagesGraterLevelAsync(byte level);
     }
 }

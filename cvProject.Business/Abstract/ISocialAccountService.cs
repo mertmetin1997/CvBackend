@@ -12,7 +12,7 @@ namespace cvProject.Business.Abstract
 {
     public interface ISocialAccountService : IGenericService<SocialAccount,SocialAccountResponseDto,SocialAccountCreateRequestDto,SocialAccountUpdateRequestDto,SocialAccountDetailResponseDto>
     {
-        Task<IDataResult<SocialAccountResponseDto>> GetSocialAccountByNameAsync();
-        Task<IDataResult<IEnumerable<SocialAccountResponseDto>>> GetSocialAccountByUserNameAsync(); 
+        Task<IDataResult<SocialAccountResponseDto>> GetSocialAccountByNameAsync(string platform);
+        Task<IDataResult<IEnumerable<SocialAccountResponseDto>>> GetSocialAccountByUserNameAsync(string username); 
     }
 }
