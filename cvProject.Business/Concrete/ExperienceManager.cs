@@ -48,7 +48,7 @@ namespace cvProject.Business.Concrete
         {
             try
             {
-                var experiences = await _experienceRepository.GetAll(e => !e.IsDeleted).ToListAsync();
+                var experiences = await _experienceRepository.GetAll(e => !e.IsDeleted).OrderByDescending(e => e.StartDate).ToListAsync();
                 if (experiences is null)
                 {
                     return new ErrorDataResult<IEnumerable<ExperienceResponseDto>>(ResultMessages.ErrorListed);
@@ -86,7 +86,7 @@ namespace cvProject.Business.Concrete
         {
             try
             {
-                var experiences = await _experienceRepository.GetAll(e => e.Company == company && !e.IsDeleted).ToListAsync();
+                var experiences = await _experienceRepository.GetAll(e => e.Company == company && !e.IsDeleted).OrderByDescending(e => e.StartDate).ToListAsync();
                 if (experiences == null)
                 {
                     return new ErrorDataResult<IEnumerable<ExperienceResponseDto>>(ResultMessages.ErrorListed);
