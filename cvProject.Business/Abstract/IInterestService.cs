@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace cvProject.Business.Abstract
 {
-    public interface IInsterestService : IGenericService<Interest,InterestResponseDto,InterestCreateRequestDto,InterestUpdateRequestDto,InterestDetailResponseDto>
+    public interface IInterestService : IGenericService<Interest,InterestResponseDto,InterestCreateRequestDto,InterestUpdateRequestDto,InterestDetailResponseDto>
     {
     }
 }

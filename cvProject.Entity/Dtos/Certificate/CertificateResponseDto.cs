@@ -10,7 +10,7 @@ namespace cvProject.Entity.Dtos.Certificate
     public sealed record CertificateResponseDto(
         Guid Id,
         string Title,
-        string Organization,
+        string Organisation,
         string Description,
         string Degree,
         DateTime DateAt

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace cvProject.Business.Concrete
 {
-    public class InterestManager : IInsterestService
+    public class InterestManager : IInterestService
     {
         private readonly IInterestRepository _interestRepository;
         private readonly IUnitOfWork _unitOfWork;

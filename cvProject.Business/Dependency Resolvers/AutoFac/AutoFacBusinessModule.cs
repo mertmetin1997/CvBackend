@@ -34,7 +34,7 @@ namespace cvProject.Business.Dependency_Resolvers.AutoFac
             builder.RegisterType<ExperienceManager>().As<IExperienceService>();
 
             builder.RegisterType<EfInterestRepository>().As<IInterestRepository>();
-            builder.RegisterType<InterestManager>().As<IInsterestService>();
+            builder.RegisterType<InterestManager>().As<IInterestService>();
 
             builder.RegisterType<EfLanguageRepository>().As<ILanguageRepository>();
             builder.RegisterType<LanguageManager>().As<ILanguageService>();

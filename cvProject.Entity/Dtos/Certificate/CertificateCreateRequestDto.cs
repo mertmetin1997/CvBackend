@@ -5,7 +5,7 @@ namespace cvProject.Entity.Dtos.Certificate
     public sealed record CertificateCreateRequestDto(
         
         string Title,
-        string Organization,
+        string Organisation,
         string Description,
         string Degree,
         DateTime DateAt
