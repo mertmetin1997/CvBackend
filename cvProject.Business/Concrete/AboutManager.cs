@@ -99,7 +99,7 @@ namespace cvProject.Business.Concrete
                 about.IsActive = false;
                 _aboutRepository.Update(about);
                 await _unitOfWork.CommitAsync();
-                return new SuccessResult(ResultMessages.ErrorGet);
+                return new SuccessResult(ResultMessages.SuccessAboutDeleted);
             }   
             catch (Exception e)
             {
