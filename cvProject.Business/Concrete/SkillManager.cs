@@ -80,24 +80,56 @@ namespace cvProject.Business.Concrete
             }
         }
 
-        public Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsProgramLanguagesAsync(bool program)
+
+        public async Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsProgramLanguagesAsync()
         {
-            throw new NotImplementedException();
+            try
+
+            {
+
+                var programs = await _skillRepository.GetAll(s => s.IsProgramLanguageAndTool).ToListAsync();
+
+                if (programs == null)
+
+                {
+
+                    return new ErrorDataResult<IEnumerable<SkillResponseDto>>(ResultMessages.ErrorListed);
+
+                }
+
+                var response = _mapper.Map<IEnumerable<SkillResponseDto>>(programs);
+
+                return new SuccessDataResult<IEnumerable<SkillResponseDto>>(response, ResultMessages.SuccessListed);
+
+            }
+
+            catch (Exception e)
+
+            {
+
+                return new ErrorDataResult<IEnumerable<SkillResponseDto>>(e.Message);
+
+            }
+
         }
 
-        public Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsProgramLanguagesAsync()
+        public async Task<IDataResult<IEnumerable<SkillResponseDto>>> GetWorkflowsAsync()
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var programs = await _skillRepository.GetAll(s => !s.IsProgramLanguageAndTool).ToListAsync();
+                if (programs == null)
+                {
+                    return new ErrorDataResult<IEnumerable<SkillResponseDto>>(ResultMessages.ErrorListed);
+                }
 
-        public Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsToolsAsync(bool tools)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsToolsAsync()
-        {
-            throw new NotImplementedException();
+                var response = _mapper.Map<IEnumerable<SkillResponseDto>>(programs);
+                return new SuccessDataResult<IEnumerable<SkillResponseDto>>(response, ResultMessages.SuccessListed);
+            }
+            catch (Exception e)
+            {
+                return new ErrorDataResult<IEnumerable<SkillResponseDto>>(e.Message);
+            }
         }
 
         public async Task<IResult> RemoveAsync(Guid id)

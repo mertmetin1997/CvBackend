@@ -32,5 +32,8 @@ namespace cvProject.Business.Constans
         public static string ErrorListed = "listeleme işlemi başarısız";
         public static string ErrorGet = "getirme işlemi başarısız";
 
+        public static string IsTrue = "Evet";
+        public static string IsFalse = "Hayır";
+
     }
 }

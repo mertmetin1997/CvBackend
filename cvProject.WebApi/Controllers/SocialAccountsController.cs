@@ -1,5 +1,5 @@
 ﻿using cvProject.Business.Abstract;
-using cvProject.Entity.Dtos.Language;
+using cvProject.Entity.Dtos.SocialAccount;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,23 +7,22 @@ namespace cvProject.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LanguagesController : ControllerBase
+    public class SocialAccountsController : ControllerBase
     {
-        private readonly ILanguageService _languageService;
+        private readonly ISocialAccountService _socialAccountService;
 
-        public LanguagesController(ILanguageService languageService)
+        public SocialAccountsController(ISocialAccountService socialAccountService)
         {
-            _languageService = languageService;
+            _socialAccountService = socialAccountService;
         }
-
         [HttpPost]
-        public async Task<IActionResult> Create(LanguageCreateRequestDto dto)
+        public async Task<IActionResult> Create(SocialAccountCreateRequestDto dto)
         {
-            if (dto == null )
+            if (dto == null)
             {
                 return BadRequest("geçersiz veri");
             }
-            var result = await _languageService.AddAsync(dto);
+            var result = await _socialAccountService.AddAsync(dto);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -33,13 +32,13 @@ namespace cvProject.WebApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(LanguageUpdateRequestDto dto)
+        public async Task<IActionResult> Update(SocialAccountUpdateRequestDto dto)
         {
             if (dto == null)
             {
                 return BadRequest("geçersiz veri");
             }
-            var result = await _languageService.UpdateAsync(dto);
+            var result = await _socialAccountService.UpdateAsync(dto);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -49,8 +48,8 @@ namespace cvProject.WebApi.Controllers
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
-        { 
-            var result = await _languageService.RemoveAsync(id);
+        {
+            var result = await _socialAccountService.RemoveAsync(id);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -59,9 +58,9 @@ namespace cvProject.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() 
+        public async Task<IActionResult> GetAll()
         {
-            var result = await _languageService.GetAllAsync();
+            var result = await _socialAccountService.GetAllAsync();
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -72,7 +71,7 @@ namespace cvProject.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var result = await _languageService.GetByIdAsync(id);
+            var result = await _socialAccountService.GetByIdAsync(id);
             if (!result.Success)
             {
                 return NotFound(result.Message);
@@ -80,17 +79,27 @@ namespace cvProject.WebApi.Controllers
             return Ok(result.Data);
         }
 
-        
-        [HttpGet("[action]/{level}")]
-        public async Task<IActionResult> GetByGreaterLevel(byte level)
+        [HttpGet("[action]/{platform}")]
+        public async Task<IActionResult> GetBySocialPlatform(string platform)
         {
-            var result = await _languageService.GetLanguagesGraterLevelAsync(level);
+            var result = await _socialAccountService.GetSocialAccountByNameAsync(platform);
+            if (!result.Success)
+            {
+                return NotFound(result.Message);
+            }
+            return Ok(result.Data);
+
+        }
+
+        [HttpGet("[action]/{username}")]
+        public async Task<IActionResult> GetAllByUsername(string username)
+        {
+            var result = await _socialAccountService.GetSocialAccountByUserNameAsync(username);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
             }
             return Ok(result.Data);
         }
-
     }
 }

@@ -95,5 +95,16 @@ namespace cvProject.WebApi.Controllers
 
 
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> IsStudent()
+        {
+            var result = await _educationService.AnyContinueAsync();
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Message);
+        }
     }
 }
