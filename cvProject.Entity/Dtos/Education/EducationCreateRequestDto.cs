@@ -4,7 +4,7 @@ namespace cvProject.Entity.Dtos.Education
 {
     public sealed record EducationCreateRequestDto(
         string School,
-        string Deprtment,
+        string Department,
         string Grade,
         decimal GPA,
         string Section,

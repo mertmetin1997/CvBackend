@@ -5,7 +5,7 @@ namespace cvProject.Entity.Dtos.Education
     public sealed record EducationUpdateRequestDto(
         Guid Id,
         string School,
-        string Deprtment,
+        string Department,
         string Grade,
         decimal GPA,
         string Section,

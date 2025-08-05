@@ -10,7 +10,7 @@ namespace cvProject.Entity.Dtos.Education
     public sealed record EducationResponseDto(
         Guid Id,
         string School,
-        string Deprtment,
+        string Department,
         string Grade,
         decimal GPA,
         string Section,
