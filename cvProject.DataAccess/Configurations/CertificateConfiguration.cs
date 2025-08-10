@@ -16,7 +16,7 @@ namespace cvProject.DataAccess.Configurations
             builder.Property(c => c.Title).HasMaxLength(100).IsRequired();
             builder.Property(c => c.Degree).HasMaxLength(30);
             builder.Property(c => c.Organisation).HasMaxLength(100).IsRequired();
-            builder.Property(c => c.Description).HasMaxLength(500).IsRequired();
+            builder.Property(c => c.Description).HasMaxLength(1000).IsRequired();
             builder.Property(c => c.DateAt).IsRequired();
         }
     }

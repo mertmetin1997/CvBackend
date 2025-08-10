@@ -13,7 +13,7 @@ namespace cvProject.DataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<About> builder)
         {
-            builder.Property(a => a.Description).HasMaxLength(500)
+            builder.Property(a => a.Description).HasMaxLength(1000)
                 .IsRequired();
         }
     }
